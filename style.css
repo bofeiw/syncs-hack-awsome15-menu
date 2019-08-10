@@ -1,0 +1,98 @@
+:root {
+    --text: #535353;
+}
+
+html,
+body {
+    height: 100%;
+    background-color: #f2f2f2;
+    color: var(--text);
+}
+
+.text-center {
+    margin: 0 auto;
+}
+
+.oval {
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+img {
+    width: 100%;
+}
+
+.header {
+    color: #ffffff;
+    background-image: linear-gradient(to right, #387bec , #4056a1);
+    height: 15%;
+}
+
+.button {
+    margin-top: 0.25rem;
+    font-size: 2rem;
+    border-radius: 2rem;
+}
+
+.right {
+    float: right;
+}
+
+.line-break {
+    background-color: #f2f2f2;
+    height: 1rem;
+    width: 100%;
+}
+
+.container-card {
+    padding-top: 1rem;
+    margin: 1rem 2rem;
+    background-color: white;
+    border-radius: 1rem;
+}
+
+.line-break-menu {
+    height: 0.03rem;
+    background-color: grey;
+}
+
+.text-card {
+    padding: 1rem 0;
+    font-size: 20px;
+}
+
+.button-text {
+    color: #000;
+    font-size: 16px;
+}
+
+.button-text:after {
+    font-size: 48px;
+    content: ' >';
+    transform: translateY(16px);
+}
+
+.menu-header {
+    margin-top: 50px;
+    font-size: 30px;
+}
+
+.menu-table {
+    min-height: 400px;
+}
+
+.container {
+    padding: 0 45px;
+}
+
+.menu-total {
+    margin-top: 30px;
+}
+
+.table td {
+    border-top: none;
+}
+
+.menu-price {
+    font-size: 30px;
+}
