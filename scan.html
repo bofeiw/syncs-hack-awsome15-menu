@@ -19,12 +19,13 @@
 </head>
 <body>
 <nav class="navbar navbar-dark bg-primary oval header">
-    <a style="color: #ffffff" href="index.html"><h1 class=""><</h1></a>
+    <img src="image/back.png"  alt="" onclick="document.getElementById('back').click()" style="width: 40px; height: 40px; cursor: pointer">
+    <a id="back" style="display: none" href="index.html"></a>
 </nav>
 <main>
     <div class="container-card" style="padding-bottom: 2rem;" id="scan">
         <div class="container text-center">
-            <p class="text-card text-center">Scan your menu</p>
+            <p class="text-card text-center">We dont have data already, please scan the menu.</p>
         </div>
         <!--        -->
         <input type="file" accept="image/*" id="file-input" style="display: none">

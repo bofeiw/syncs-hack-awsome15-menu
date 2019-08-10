@@ -32,6 +32,7 @@ img {
     margin-top: 0.25rem;
     font-size: 2rem;
     border-radius: 2rem;
+    margin-bottom: 24px;
 }
 
 .right {
@@ -67,9 +68,18 @@ img {
 }
 
 .button-text:after {
-    font-size: 48px;
-    content: ' >';
-    transform: translateY(16px);
+    content: "";
+    background-image:url("image/next.png");
+    background-size: 100% 100%;
+    display: inline-block;
+
+    /*size of your image*/
+    height: 40px;
+    width:40px;
+
+    /*if you want to change the position you can use margins or:*/
+    position:relative;
+    top:12px;
 }
 
 .menu-header {
