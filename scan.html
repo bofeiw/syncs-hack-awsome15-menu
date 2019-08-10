@@ -14,6 +14,7 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+    <script src='https://unpkg.com/tesseract.js@v2.0.0-alpha.13/dist/tesseract.min.js'></script>
     <title>Menu</title>
 </head>
 <body>
@@ -30,15 +31,23 @@
         <script>
             const fileInput = document.getElementById('file-input');
 
-            function doSomethingWithFiles(file) {
+            function processImage(file) {
+                const worker = new Tesseract.TesseractWorker();
 
+                worker.recognize(file)
+                    .then(function (result) {
+                        console.log(result);
+                        document.getElementById("result").innerHTML = result;
+                    });
             }
 
-            fileInput.addEventListener('change', (e) => doSomethingWithFiles(e.target.files));
+            fileInput.addEventListener('change', (e) => processImage(e.target.files));
         </script>
         <!--        -->
-        <img class="text-center" src="image/menu.jpg"
-             alt="ask">
+        <div id="progress"></div>
+        <div id="result"></div>
+        <!--        <img class="text-center" src="image/menu.jpg"-->
+        <!--             alt="ask">-->
         <!--        -->
         <div class="container text-center" style="margin-top: 2rem">
             <a href="menu.html">
