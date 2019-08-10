@@ -51,12 +51,14 @@
                     </tr>
                  */
                 const dataarray = datastr.split("\n");
+                let sum = 0;
                 dataarray.forEach(function (data) {
                     const name = data.split(" ")[0];
                     const price = data.split(" ")[1];
                     if (! name || ! price) {
                         return;
                     }
+                    sum += parseFloat(price);
                     const tr = document.createElement("tr");
                     const td1 = document.createElement("td");
                     const td2 = document.createElement("td");
@@ -66,6 +68,7 @@
                     tr.appendChild(td2);
                     console.log(tr);
                     table.appendChild(tr);
+                    document.getElementById('menu-price').innerText = '$' + sum;
                     // console.log(data.split(" ")[0], data.split(" ")[1]);
                 });
             }
@@ -111,7 +114,7 @@
 
             <p class="right menu-total">Total</p>
             <div style="clear:both"></div>
-            <h1 class="right menu-price">$20.50</h1>
+            <h1 class="right menu-price" id="menu-price">$20.50</h1>
             <div style="clear:both"></div>
         </div>
 
