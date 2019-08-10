@@ -19,7 +19,8 @@
 </head>
 <body>
 <nav class="navbar navbar-dark bg-primary oval header">
-    <img src="image/back.png"  alt="" onclick="document.getElementById('back').click()" style="width: 40px; height: 40px; cursor: pointer">
+    <img src="image/back.png" alt="" onclick="document.getElementById('back').click()"
+         style="width: 40px; height: 40px; cursor: pointer">
     <a id="back" style="display: none" href="index.html"></a>
 </nav>
 <main>
@@ -30,7 +31,6 @@
         <!--        -->
         <input type="file" accept="image/*" id="file-input" style="display: none">
         <!--        -->
-        <div id="result" class="text-center"></div>
         <div class="container text-center" style="margin-top: 2rem" id="button">
             <svg class="" height="70" width="70" style="cursor:pointer;">
                 <circle cx="35" cy="35" r="25" stroke-width="3" fill="#3a73dd"/>
@@ -56,7 +56,7 @@
                 dataarray.forEach(function (data) {
                     const name = data.split(" ")[0];
                     const price = data.split(" ")[1];
-                    if (! name || ! price) {
+                    if (!name || !price) {
                         return;
                     }
                     sum += parseFloat(price);
@@ -80,24 +80,32 @@
                 const worker = new Tesseract.TesseractWorker();
 
                 document.getElementById("result").innerHTML += "worker created";
+                document.getElementById('scanning-wrapper').style.display = "block";
+                document.getElementById('scan').style.display = "None";
                 console.log(worker);
                 worker.recognize(file)
                     .progress(progress => {
                         document.getElementById("result").innerHTML = progress.progress + "%";
                         console.log('progress', progress);
                     }).then(function (result) {
-                        console.log(result);
-                        document.getElementById("result").innerHTML += "done";
-                        document.getElementById("result").innerHTML = result.text;
-                        console.log('end processing');
-                        presentMenu(result.text);
-                        document.getElementById('scan').style.display = "None";
-                        document.getElementById('menu').style.display = "block";
-                    });
+                    console.log(result);
+                    document.getElementById("result").innerHTML += "done";
+                    document.getElementById("result").innerHTML = result.text;
+                    console.log('end processing');
+                    presentMenu(result.text);
+                    document.getElementById('scanning-wrapper').style.display = "none";
+                    document.getElementById('menu').style.display = "block";
+                });
             }
 
             fileInput.addEventListener('change', (e) => processImage(e.target.files[0]));
         </script>
+    </div>
+
+    <div class="container-card" style="display: none" id="scanning-wrapper">
+        <h1 class="menu-header text-center">Scanning</h1>
+        <div id="result" class="text-center"></div>
+        <img id="scanning"/> <!-- image you want to display it (target) -->
     </div>
 
 
@@ -122,4 +130,21 @@
     </div>
 </main>
 </body>
+<script>
+    function showImage(src, target) {
+        var fr = new FileReader();
+        // when image is loaded, set the src of the image where you want to display it
+        fr.onload = function (e) {
+            target.src = this.result;
+        };
+        src.addEventListener("change", function () {
+            // fill fr with image data
+            fr.readAsDataURL(src.files[0]);
+        });
+    }
+
+    var src = document.getElementById("file-input");
+    var target = document.getElementById("scanning");
+    showImage(src, target);
+</script>
 </html>
