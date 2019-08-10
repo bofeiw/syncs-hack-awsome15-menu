@@ -32,16 +32,21 @@
             const fileInput = document.getElementById('file-input');
 
             function processImage(file) {
+                console.log('start processing');
+                console.log(file);
                 const worker = new Tesseract.TesseractWorker();
 
+                console.log('worker created');
+                console.log(worker);
                 worker.recognize(file)
                     .then(function (result) {
                         console.log(result);
-                        document.getElementById("result").innerHTML = result;
+                        document.getElementById("result").innerHTML = result.text;
+                        console.log('end processing');
                     });
             }
 
-            fileInput.addEventListener('change', (e) => processImage(e.target.files));
+            fileInput.addEventListener('change', (e) => processImage(e.target.files[0]));
         </script>
         <!--        -->
         <div id="progress"></div>
