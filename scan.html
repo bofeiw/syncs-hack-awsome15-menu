@@ -25,8 +25,23 @@
         <div class="container text-center">
             <p class="text-card text-center">Scan your menu</p>
         </div>
+<!--        -->
+        <video autoplay></video>
+
+        <script>
+            const constraints = {
+                video: true
+            };
+
+            const video = document.querySelector('video');
+
+            navigator.mediaDevices.getUserMedia(constraints).
+            then((stream) => {video.srcObject = stream});
+        </script>
+<!--        -->
         <img class="text-center" src="image/menu.jpg"
              alt="ask">
+<!--        -->
         <div class="container text-center" style="margin-top: 2rem">
             <a href="menu.html">
                 <svg class="" height="70" width="70">
